@@ -1,53 +1,418 @@
+<!-- Top price-->
 <div class="container">
-  <h3>
-    {{ nameType }}
-  </h3>
+  <h3 class="text-raca">Minimum Price / Avg Price</h3>
+  <div class="row">
+    <div class="col-4">
+      <p>
+        <span class="text-primary">Kiss Land</span> :
+        <span class="text-raca">{{ minKiss }} / {{ avgKiss }}</span>
+      </p>
+      <br />
+    </div>
+    <div class="col-4">
+      <p>
+        <span class="text-primary">Egg</span> :
+        <span class="text-raca">{{ minEgg }} / {{ avgEgg }}</span>
+      </p>
+      <br />
+    </div>
+    <div class="col-4">
+      <p>
+        <span class="text-primary">BMBM</span> :
+        <span class="text-raca">{{ minBMBM }} / {{ avgBMBM }}</span>
+      </p>
+      <br />
+    </div>
+    <div class="col-4">
+      <p>
+        <span class="text-primary">Yellow Diamond</span>:
+        <span class="text-raca">{{ minYD }} / {{ avgYD }}</span>
+      </p>
+      <br />
+    </div>
+    <div class="col-4">
+      <p>
+        <span class="text-primary">MTM</span> :
+        <span class="text-raca">{{ minMTM }} / {{ avgMTM }}</span>
+      </p>
+      <br />
+    </div>
+    <div class="col-4">
+      <p>
+        <span class="text-primary">Potion</span> :
+        <span class="text-raca">{{ minPotion }} / {{ avgPotion }}</span>
+      </p>
+      <br />
+    </div>
+  </div>
 </div>
-<div class="container table-responsive py-5">
-  <mat-table [dataSource]="dataSource" matSort>
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef class="header type-column" scope="col"> Detail</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <a target="_blank"
-          rel="noopener noreferrer"
-          [href]="'https://market.radiocaca.com/#/market-place/' + row.id"
-          >{{row.id}}</a
+<!-- Top price-->
+<!-- MTM-->
+<div class="container mt-3">
+  <a
+    class="btn btn-primary"
+    data-toggle="collapse"
+    href="#collapseMTM"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseMTM"
+  >
+    MTM <span class="glyphicon glyphicon-triangle-bottom"></span>
+  </a>
+</div>
+<div class="container table-responsive py-5 collapse show" id="collapseMTM">
+  <div class="card card-body">
+    <mat-table [dataSource]="dataSourceMTM" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell
+          *matHeaderCellDef
+          class="header type-column"
+          scope="col"
         >
-      </mat-cell>
-    </ng-container>
+          Detail</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row1">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            [href]="'https://market.radiocaca.com/#/market-place/' + row1.id"
+            >{{ row1.id }}</a
+          >
+        </mat-cell>
+      </ng-container>
 
-    <!-- fixed_price Column -->
-    <ng-container matColumnDef="fixed_price">
-      <mat-header-cell *matHeaderCellDef scope="col">
-        fixed_price
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.fixed_price}}</mat-cell>
-    </ng-container>
+      <!-- score Column -->
+      <ng-container matColumnDef="score">
+        <mat-header-cell *matHeaderCellDef scope="col"> Score </mat-header-cell>
+        <mat-cell *matCellDef="let row1"> {{ row1.score }}</mat-cell>
+      </ng-container>
+      <!-- level Column -->
+      <ng-container matColumnDef="level">
+        <mat-header-cell *matHeaderCellDef scope="col"> Level </mat-header-cell>
+        <mat-cell *matCellDef="let row1"> {{ row1.level }}</mat-cell>
+      </ng-container>
+      <!-- fixed_price Column -->
+      <ng-container matColumnDef="fixed_price">
+        <mat-header-cell *matHeaderCellDef scope="col"> Price </mat-header-cell>
+        <mat-cell *matCellDef="let row1"> {{ row1.fixed_price }}</mat-cell>
+      </ng-container>
 
-    <!-- imageUrl Column -->
-    <ng-container matColumnDef="image_url">
-      <mat-header-cell *matHeaderCellDef scope="col">Image Url</mat-header-cell>
-      <mat-cell *matCellDef="let row"><img [src]="row.image_url" width="65" height="45"/> </mat-cell>
-    </ng-container>
+      <!-- imageUrl Column -->
+      <ng-container matColumnDef="image_url">
+        <mat-header-cell *matHeaderCellDef scope="col"
+          >Image Url</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row1"
+          ><img [src]="row1.image_url" width="65" height="45" />
+        </mat-cell>
+      </ng-container>
 
-    <!-- status Column -->
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef scope="col">
-        status
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
-    </ng-container>
+      <!-- status Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef scope="col">
+          Status
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row1"> {{ row1.status }} </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columns"> </mat-row>
-  </mat-table>
-  <mat-paginator
-    [pageSizeOptions]="[10, 20]"
-    showFirstLastButtons
-    aria-label="Select page of periodic elements">
-  </mat-paginator>
+      <mat-header-row *matHeaderRowDef="columnsMTM"></mat-header-row>
+      <mat-row *matRowDef="let row1; columns: columnsMTM"> </mat-row>
+    </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="[10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
 </div>
+<!-- -->
+<!-- Kiss-->
+<div class="container mt-3">
+  <a
+    class="btn btn-primary"
+    data-toggle="collapse"
+    href="#collapseKiss"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseKiss"
+  >
+    Kiss-up Land <span class="glyphicon glyphicon-triangle-bottom"></span>
+  </a>
+</div>
+<div class="container table-responsive py-5 collapse show" id="collapseKiss">
+  <div class="card card-body">
+    <mat-table [dataSource]="dataSourceKissLand" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell
+          *matHeaderCellDef
+          class="header type-column"
+          scope="col"
+        >
+          Detail</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            [href]="'https://market.radiocaca.com/#/market-place/' + row.id"
+            >{{ row.id }}</a
+          >
+        </mat-cell>
+      </ng-container>
+
+      <!-- fixed_price Column -->
+      <ng-container matColumnDef="fixed_price">
+        <mat-header-cell *matHeaderCellDef scope="col"> Price </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.fixed_price }}</mat-cell>
+      </ng-container>
+
+      <!-- imageUrl Column -->
+      <ng-container matColumnDef="image_url">
+        <mat-header-cell *matHeaderCellDef scope="col"
+          >Image Url</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"
+          ><img [src]="row.image_url" width="65" height="45" />
+        </mat-cell>
+      </ng-container>
+
+      <!-- status Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef scope="col">
+          Status
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.status }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns"> </mat-row>
+    </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="[10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
+<!-- -->
+
+<!-- Yellow Diamond-->
+<div class="container mt-3">
+  <a
+    class="btn btn-primary"
+    data-toggle="collapse"
+    href="#collapseYD"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseYD"
+  >
+    Yellow Diamond <span class="glyphicon glyphicon-triangle-bottom"></span>
+  </a>
+</div>
+<div class="container table-responsive py-5 collapse show" id="collapseYD">
+  <div class="card card-body">
+    <mat-table [dataSource]="dataSourceYellowDiamond" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell
+          *matHeaderCellDef
+          class="header type-column"
+          scope="col"
+        >
+          Detail</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            [href]="'https://market.radiocaca.com/#/market-place/' + row.id"
+            >{{ row.id }}</a
+          >
+        </mat-cell>
+      </ng-container>
+
+      <!-- fixed_price Column -->
+      <ng-container matColumnDef="fixed_price">
+        <mat-header-cell *matHeaderCellDef scope="col"> Price </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.fixed_price }}</mat-cell>
+      </ng-container>
+
+      <!-- imageUrl Column -->
+      <ng-container matColumnDef="image_url">
+        <mat-header-cell *matHeaderCellDef scope="col"
+          >Image Url</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"
+          ><img [src]="row.image_url" width="65" height="45" />
+        </mat-cell>
+      </ng-container>
+
+      <!-- status Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef scope="col">
+          Status
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.status }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns"> </mat-row>
+    </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="[10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
+<!-- -->
+<!-- BMBM-->
+<div class="container mt-3">
+  <a
+    class="btn btn-primary"
+    data-toggle="collapse"
+    href="#collapseBMBM"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseBMBM"
+  >
+    BMBM <span class="glyphicon glyphicon-triangle-bottom"></span>
+  </a>
+</div>
+<div class="container table-responsive py-5 collapse show" id="collapseBMBM">
+  <div class="card card-body">
+    <mat-table [dataSource]="dataSourceBMBM" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell
+          *matHeaderCellDef
+          class="header type-column"
+          scope="col"
+        >
+          Detail</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            [href]="'https://market.radiocaca.com/#/market-place/' + row.id"
+            >{{ row.id }}</a
+          >
+        </mat-cell>
+      </ng-container>
+
+      <!-- fixed_price Column -->
+      <ng-container matColumnDef="fixed_price">
+        <mat-header-cell *matHeaderCellDef scope="col"> Price </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.fixed_price }}</mat-cell>
+      </ng-container>
+
+      <!-- imageUrl Column -->
+      <ng-container matColumnDef="image_url">
+        <mat-header-cell *matHeaderCellDef scope="col"
+          >Image Url</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"
+          ><img [src]="row.image_url" width="65" height="45" />
+        </mat-cell>
+      </ng-container>
+
+      <!-- status Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef scope="col">
+          Status
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.status }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns"> </mat-row>
+    </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="[10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
+<!-- -->
+<!-- Egg-->
+<div class="container mt-3">
+  <a
+    class="btn btn-primary"
+    data-toggle="collapse"
+    href="#collapseEgg"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseEgg"
+  >
+    Egg <span class="glyphicon glyphicon-triangle-bottom"></span>
+  </a>
+</div>
+<div class="container table-responsive py-5 collapse show" id="collapseEgg">
+  <div class="card card-body">
+    <mat-table [dataSource]="dataSourceEgg" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell
+          *matHeaderCellDef
+          class="header type-column"
+          scope="col"
+        >
+          Detail</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            [href]="'https://market.radiocaca.com/#/market-place/' + row.id"
+            >{{ row.id }}</a
+          >
+        </mat-cell>
+      </ng-container>
+
+      <!-- fixed_price Column -->
+      <ng-container matColumnDef="fixed_price">
+        <mat-header-cell *matHeaderCellDef scope="col"> Price </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.fixed_price }}</mat-cell>
+      </ng-container>
+
+      <!-- imageUrl Column -->
+      <ng-container matColumnDef="image_url">
+        <mat-header-cell *matHeaderCellDef scope="col"
+          >Image Url</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"
+          ><img [src]="row.image_url" width="65" height="45" />
+        </mat-cell>
+      </ng-container>
+
+      <!-- status Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef scope="col">
+          Status
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.status }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns"> </mat-row>
+    </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="[10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
+<!-- -->
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.

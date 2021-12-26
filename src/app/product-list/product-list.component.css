@@ -161,4 +161,24 @@ can be found in the LICENSE file at https://angular.io/license
   .gray-svg {
     fill: #b2b4b6;
   }
+  td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+.mat-header-cell {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.mat-cell {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.text-raca {
+  font-size: large;
+  color: rgba(0, 0, 0, 0.692);
+  font-weight: bold;
+  
+}
   /* ---------------------------------------------------------- */

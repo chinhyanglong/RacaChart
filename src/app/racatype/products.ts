@@ -1,14 +1,19 @@
-export interface Product {
-  id: number;
-  name: string;
-  image_url: string;
-  sale_address: string;
-  sale_type: string;
-  status: string;
-  token_id: string;
-  fixed_price: number;
-  count: number;
-  highest_price: number;
+import { Properties } from "./properties";
+
+export class Product {
+  id!: number;
+  name!: string;
+  image_url!: string;
+  sale_address!: string;
+  sale_type!: string;
+  status!: string;
+  token_id!: string;
+  fixed_price!: number;
+  count!: number;
+  highest_price!: number;
+  score: string = '';
+  level: number = -1;
+  properties!: Properties[];
 }
 
 

@@ -1,8 +1,13 @@
-
 .btc-color h2 a:link {
-    color: #fcc428;
-    font-size: 14px;   
-  }
+  color: #fcc428;
+  font-size: 14px;
+}
+.text-btc {
+  color: #e6fbff !important;
+}
+.text-raca {
+  color: #ffea57 !important;
+}
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that

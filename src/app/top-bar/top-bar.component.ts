@@ -9,10 +9,20 @@ import { RacaTypeService } from '../racatype/racatype.service';
 export class TopBarComponent implements OnInit {
   racaPrice : any;
   btcPrice : any;
+  id: any;
   constructor(private service: RacaTypeService) { }
   ngOnInit() {
       this.getRacaPriceCom();
       this.getBTCPriceCom();
+      this.id = setInterval(() => {
+        this.getRacaPriceCom();
+      this.getBTCPriceCom();
+      }, 5000);
+  }
+  ngOnDestroy() {
+    if (this.id) {
+      clearInterval(this.id);
+    }
   }
   getRacaPriceCom() {
     this.service.getRacaPrice().subscribe(respon=>{
